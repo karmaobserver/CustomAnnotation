@@ -8,15 +8,28 @@ import javax.lang.model.util.Elements;
  * Created by Aleksej on 9/12/2017.
  */
 
+/**
+ * Util class.
+ */
 final class Utils {
 
     private Utils() {
         // no instances
     }
 
-    static String getPackageName(Elements elementUtils, TypeElement type)
-            throws NoPackageNameException {
+    /**
+     * Get package name.
+     *
+     * @param elementUtils Element
+     * @param type         Type of our annotated class
+     * @return String of package name
+     * @throws NoPackageNameException
+     */
+    static String getPackageName(Elements elementUtils, TypeElement type) throws NoPackageNameException {
+
         PackageElement packageElement = elementUtils.getPackageOf(type);
+
+        //In case our package element has no name, trow exception
         if (packageElement.isUnnamed()) {
             throw new NoPackageNameException(type);
         }

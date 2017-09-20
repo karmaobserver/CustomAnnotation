@@ -1,6 +1,7 @@
-package com.makaji.aleksej.customanotation;
+package com.makaji.aleksej.customanotation.Pojo;
 
 import com.example.StaticStringUtil;
+import com.makaji.aleksej.customanotation.Pojo.StringUtil;
 
 /**
  * Created by Aleksej on 9/12/2017.
@@ -8,6 +9,7 @@ import com.example.StaticStringUtil;
 
 @StaticStringUtil
 public class Car {
+
     public String name;
 
     public Car(String name) {
@@ -18,7 +20,4 @@ public class Car {
         return StringUtil.createString(this);
     }
 
-    public String getName() {
-        return StringUtil.getname(this);
-    }
 }

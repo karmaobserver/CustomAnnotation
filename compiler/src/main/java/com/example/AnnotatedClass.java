@@ -9,9 +9,16 @@ import javax.lang.model.type.TypeMirror;
  * Created by Aleksej on 9/12/2017.
  */
 
+
+/**
+ * Annotated class fields and constructor.
+ */
 class AnnotatedClass {
+
     public final String annotatedClassName;
+
     public final List<String> variableNames;
+
     public final TypeElement typeElement;
 
     public AnnotatedClass(TypeElement typeElement, List<String> variableNames) {

@@ -1,4 +1,3 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
     repositories {
@@ -11,7 +10,7 @@ buildscript {
         // in the individual module build.gradle files
 
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
-        classpath 'com.novoda:bintray-release:0.2.10'
+
     }
 }
 
@@ -25,12 +24,3 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext {
-    userOrg = 'attwellbrian'
-    groupId = 'com.brianattwell'
-    uploadName = 'Android-StaticToStringUtil'
-    description = 'Demonstration of annotation processing inside Gradle project'
-    publishVersion = '0.3.5'
-    website = 'http://brianattwell.com'
-    licences = ['MIT']
-}

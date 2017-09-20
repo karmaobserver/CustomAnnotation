@@ -12,33 +12,50 @@ import static javax.lang.model.element.Modifier.FINAL;
 import static javax.lang.model.element.Modifier.PUBLIC;
 import static javax.lang.model.element.Modifier.STATIC;
 
+/**
+ * Class which generates code for our annotated class.
+ */
 final class CodeGenerator {
 
     private static final String CLASS_NAME = "StringUtil";
 
+    /**
+     * Generate class code, add modifiers and methods.
+     *
+     * @param classes Annotated classes
+     * @return TypeSpec which can be generated class, interface, or enum declaration. In our case, class.
+     */
     public static TypeSpec generateClass(List<AnnotatedClass> classes) {
-        TypeSpec.Builder builder =  classBuilder(CLASS_NAME)
+
+        //build class name and class modifiers
+        TypeSpec.Builder builder = classBuilder(CLASS_NAME)
                 .addModifiers(PUBLIC, FINAL);
         for (AnnotatedClass annotatedClass : classes) {
+
+            //Add class methods
             builder.addMethod(makeCreateStringMethod(annotatedClass));
-            for (String variableName : annotatedClass.variableNames) {
-                builder.addMethod(makeGetMethod(annotatedClass, variableName));
-            }
         }
         return builder.build();
     }
 
     /**
-     * @return a createString() method that takes annotatedClass's type as an input.
+     * Building specific method, which code will be generated.
+     *
+     * @param annotatedClass Annotated class
+     * @return a createString() method that takes annotatedClass's type as an input
      */
     private static MethodSpec makeCreateStringMethod(AnnotatedClass annotatedClass) {
         StringBuilder builder = new StringBuilder();
+
+        //Building string which will be generated as code
         builder.append(String.format("return \"%s{\" + ", annotatedClass.annotatedClassName));
         for (String variableName : annotatedClass.variableNames) {
             builder.append(String.format(" \"%s='\" + String.valueOf(instance.%s) + \"',\" + ",
                     variableName, variableName));
         }
         builder.append("\"}\"");
+
+        //Building method which will be generated as code
         return methodBuilder("createString")
                 .addJavadoc("@return string suitable for {@param instance}'s toString()")
                 .addModifiers(PUBLIC, STATIC)
@@ -48,22 +65,4 @@ final class CodeGenerator {
                 .build();
     }
 
-    /**
-     * Get methods to be generated
-     * @param annotatedClass
-     * @param variableName
-     * @return
-     */
-    private static MethodSpec makeGetMethod(AnnotatedClass annotatedClass, String variableName) {
-        StringBuilder builder = new StringBuilder();
-        builder.append(String.format("return instance.%s", variableName));
-
-        return methodBuilder("get" + variableName)
-                .addJavadoc("@return nestoooo smislicu")
-                .addModifiers(PUBLIC, STATIC)
-                .addParameter(get(annotatedClass.getType()), "instance")
-                .addStatement(builder.toString())
-                .returns(String.class)
-                .build();
-    }
 }

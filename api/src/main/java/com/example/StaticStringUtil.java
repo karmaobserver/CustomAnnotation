@@ -15,10 +15,5 @@ import static java.lang.annotation.RetentionPolicy.CLASS;
  */
 @Retention(value = CLASS)   // Stored into class file and not retained in runtime
 @Target(value = TYPE)   //Class type annotation
-public @interface StaticStringUtil {}
-
-
-/*@Retention: annotation indicates how the custom annotation is stored. There are 3 types of retention.
-        SOURCE — analyses by compiler and never stored
-        CLASS — stored into class file and not retained in runtime
-        RUNTIME — store into class file and usable in runtime(by reflection)*/
+public @interface StaticStringUtil {
+}
