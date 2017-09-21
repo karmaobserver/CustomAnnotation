@@ -1,5 +1,6 @@
-package com.example;
+package com.example.util;
 
+import com.example.util.AnnotatedClass;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
@@ -15,7 +16,7 @@ import static javax.lang.model.element.Modifier.STATIC;
 /**
  * Class which generates code for our annotated class.
  */
-final class CodeGenerator {
+public final class CodeGenerator {
 
     private static final String CLASS_NAME = "StringUtil";
 

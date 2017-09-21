@@ -1,4 +1,4 @@
-package com.example;
+package com.example.util;
 
 import javax.lang.model.element.TypeElement;
 
@@ -12,13 +12,13 @@ import static javax.lang.model.element.Modifier.PUBLIC;
 /**
  * Class which have methods to check if annotated class is public or abstract.
  */
-final class ClassValidator {
+public final class ClassValidator {
 
-    static boolean isPublic(TypeElement annotatedClass) {
+    public static boolean isPublic(TypeElement annotatedClass) {
         return annotatedClass.getModifiers().contains(PUBLIC);
     }
 
-    static boolean isAbstract(TypeElement annotatedClass) {
+    public static boolean isAbstract(TypeElement annotatedClass) {
         return annotatedClass.getModifiers().contains(ABSTRACT);
     }
 }

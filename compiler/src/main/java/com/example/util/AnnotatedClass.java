@@ -1,4 +1,4 @@
-package com.example;
+package com.example.util;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import javax.lang.model.type.TypeMirror;
 /**
  * Annotated class fields and constructor.
  */
-class AnnotatedClass {
+public class AnnotatedClass {
 
     public final String annotatedClassName;
 

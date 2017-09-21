@@ -1,4 +1,6 @@
-package com.example;
+package com.example.util;
+
+import com.example.util.NoPackageNameException;
 
 import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
@@ -11,7 +13,7 @@ import javax.lang.model.util.Elements;
 /**
  * Util class.
  */
-final class Utils {
+public final class Utils {
 
     private Utils() {
         // no instances
@@ -25,7 +27,7 @@ final class Utils {
      * @return String of package name
      * @throws NoPackageNameException
      */
-    static String getPackageName(Elements elementUtils, TypeElement type) throws NoPackageNameException {
+    public static String getPackageName(Elements elementUtils, TypeElement type) throws NoPackageNameException {
 
         PackageElement packageElement = elementUtils.getPackageOf(type);
 

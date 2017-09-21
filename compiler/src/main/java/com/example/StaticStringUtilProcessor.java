@@ -4,6 +4,10 @@ package com.example;
  * Created by Aleksej on 9/12/2017.
  */
 
+import com.example.util.AnnotatedClass;
+import com.example.util.ClassValidator;
+import com.example.util.CodeGenerator;
+import com.example.util.NoPackageNameException;
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
@@ -20,13 +24,14 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 
-import static com.example.Utils.getPackageName;
+import static com.example.util.Utils.getPackageName;
 import static com.squareup.javapoet.JavaFile.builder;
 import static java.util.Collections.singleton;
 import static javax.lang.model.SourceVersion.latestSupported;
 import static javax.tools.Diagnostic.Kind.*;
 
 /**
+ * Annotation processor class, it is used for scanning and processing annotations at compile time.
  * Annotated class cast instance of Pojo Class to string (for example like in Pojo class toString method).
  * Annotated class restrictions are that class must be public and not abstract.
  */
@@ -39,12 +44,22 @@ public class StaticStringUtilProcessor extends AbstractProcessor {
     //Message which will be showed to developer when he make mistake with annotating
     private Messager messager;
 
+    /**
+     * Initializes the processor with the processing environment by setting the processingEnv field to the value of the processingEnv argument.
+     *
+     * @param processingEnv Environment to access facilities the tool framework provides to the processor
+     */
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
         messager = processingEnv.getMessager();
     }
 
+    /**
+     * If the processor class is annotated with SupportedAnnotationTypes, return an unmodifiable set with the same set of strings as the annotation.
+     *
+     * @return The names of the annotation types supported by this processor, or an empty set if none
+     */
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         return singleton(StaticStringUtil.class.getCanonicalName());
@@ -53,7 +68,7 @@ public class StaticStringUtilProcessor extends AbstractProcessor {
     /**
      * Java version which processor handle.
      *
-     * @return Java version
+     * @return The latest source version supported by this processor
      */
     @Override
     public SourceVersion getSupportedSourceVersion() {
@@ -61,11 +76,12 @@ public class StaticStringUtilProcessor extends AbstractProcessor {
     }
 
     /**
-     * Method which needs to be override. Business logic of our processor.
+     * Processes a set of annotation types on type elements originating from the prior round and returns whether or not these annotations are claimed by this processor.
+     * Business logic of our processor.
      *
-     * @param annotations
-     * @param roundEnv
-     * @return
+     * @param annotations The annotation types requested to be processed
+     * @param roundEnv    Environment for information about the current and prior round
+     * @return Whether or not the set of annotations are claimed by this processor
      */
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
@@ -109,7 +125,7 @@ public class StaticStringUtilProcessor extends AbstractProcessor {
      * Check if our annotated class is valid, check their restrictions.
      * In case developer made mistake and annotated not proper, show him message.
      *
-     * @param annotatedClass Our annotated class
+     * @param annotatedClass Annotated class
      * @return True if annotation is put on right place, else return false.
      */
     private boolean isValidClass(TypeElement annotatedClass) {

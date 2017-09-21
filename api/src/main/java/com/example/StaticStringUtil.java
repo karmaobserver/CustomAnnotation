@@ -11,7 +11,8 @@ import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.CLASS;
 
 /**
- * Create a function in {@link StringUtil} for creating strings.
+ * This custom annotation can be used on class only.
+ * Creates a function in {@link StringUtil} for creating strings.
  */
 @Retention(value = CLASS)   // Stored into class file and not retained in runtime
 @Target(value = TYPE)   //Class type annotation

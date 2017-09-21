@@ -1,4 +1,4 @@
-package com.example;
+package com.example.util;
 
 import javax.lang.model.element.TypeElement;
 
@@ -9,7 +9,7 @@ import javax.lang.model.element.TypeElement;
 /**
  * Class which operate in case we have package exception.
  */
-class NoPackageNameException extends Exception {
+public class NoPackageNameException extends Exception {
 
     public NoPackageNameException(TypeElement typeElement) {
         super("The package of " + typeElement.getSimpleName() + " has no name");
