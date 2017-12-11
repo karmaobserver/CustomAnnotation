@@ -1,9 +1,7 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "com.makaji.aleksej.customanotation"
         minSdkVersion 17
@@ -30,7 +28,7 @@ dependencies {
 
     //Added dependencies modules
     compile project(':api')
-    apt project(':compiler')
+    annotationProcessor project(':compiler')
 
     testCompile 'junit:junit:4.12'
 }

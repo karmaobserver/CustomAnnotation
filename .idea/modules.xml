@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CustomAnotation.iml" filepath="$PROJECT_DIR$/CustomAnotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CustomAnnotation.iml" filepath="$PROJECT_DIR$/CustomAnnotation.iml" />
+      <module fileurl="file://C:\Users\Laszlo\Desktop\My Projects ON GitHub\CustomAnnotation\CustomAnotation.iml" filepath="C:\Users\Laszlo\Desktop\My Projects ON GitHub\CustomAnnotation\CustomAnotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
+      <module fileurl="file://C:\Users\Laszlo\Desktop\My Projects ON GitHub\CustomAnnotation\api\api.iml" filepath="C:\Users\Laszlo\Desktop\My Projects ON GitHub\CustomAnnotation\api\api.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Laszlo\Desktop\My Projects ON GitHub\CustomAnnotation\app\app.iml" filepath="C:\Users\Laszlo\Desktop\My Projects ON GitHub\CustomAnnotation\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/compiler/compiler.iml" filepath="$PROJECT_DIR$/compiler/compiler.iml" />
+      <module fileurl="file://C:\Users\Laszlo\Desktop\My Projects ON GitHub\CustomAnnotation\compiler\compiler.iml" filepath="C:\Users\Laszlo\Desktop\My Projects ON GitHub\CustomAnnotation\compiler\compiler.iml" />
     </modules>
   </component>
 </project>
